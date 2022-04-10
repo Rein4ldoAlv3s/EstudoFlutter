@@ -1,48 +1,51 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 main(){
-  runApp(AppWidget(
-      title: 'Fluterando HU3',
-  ));
+  runApp(Widy(title: 'REINALDO ALVES'));
 }
 
-// class AppWidget extends StatelessWidget{
-//
-//   final String title;
-//
-//   const AppWidget({Key? key, required this.title}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: Center(
-//           child: Text(
-//             title,
-//             textDirection: TextDirection.ltr,
-//             style: TextStyle(color: Colors.white, fontSize: 50.0),
-//           ),
-//       ),
-//     );
-//     throw UnimplementedError();
-//   }
-//
-// }
-
-class AppWidget extends StatelessWidget {
+class Widy extends StatelessWidget{
 
   final String title;
 
-  const AppWidget({Key? key, required this.title}) : super(key: key);
+  const Widy({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.red
-      ),
-      home: Container(
-          child: Center(child: Text('Fluterando')),
-      ),
+      theme: ThemeData(primarySwatch: Colors.red),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget{
+  @override
+  State<HomePage> createState() {
+    return HomePageState();
+  }
+
+}
+
+class HomePageState extends State<HomePage> {
+  int counter=0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Center(
+            child: GestureDetector(
+            child: Text('Contador: $counter'),
+            onTap: (){
+              setState(() {
+                print(counter);
+              });
+              counter++;
+
+            },
+        )),
     );
   }
 }
